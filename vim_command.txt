@@ -1,0 +1,232 @@
+"""""""""""""""""""""""""""
+""""""HEX file view
+"""""""""""""""""""""""""""
+:%!xxd (% whole file, !execute, xxd command) to view the file in HEX mode
+:%!xxd -r to go back test mode
+"""""""""""""""""""""""""""
+""""""Remove "^M"
+"""""""""""""""""""""""""""
+You can also do it in vi: % vi filename
+Inside vi [in ESC mode] type: :%s/^M//g
+To enter ^M, type CTRL-V, then CTRL-M. That is, hold down the CTRL key then press V and M in succession.
+
+"""""""""""""""""""""""""""""""""""""
+"""" Replacement in visually select 
+""""""""""""""""""""""""""""""""""""""
+%s/\%VText/Relacement/
+
+"""""""""""""""""""""""""""""""""""""
+"""" Replacement from current line to the end
+""""""""""""""""""""""""""""""""""""""
+:.,$s/Text/replacement/g
+:1,$s/Text/replacement/g
+
+
+
+"""""""""""""""""""""""""""
+""""""Saving session
+"""""""""""""""""""""""""""
+;;Save Session
+mksession! xx/xx/xxx.vim
+wviminfo! xx/xx/xxx.viminfo
+;;Restrore session
+source xx/xx/xxx.vim
+rviminfo! xx/xx/xxx.viminfo
+
+"""""""""""""""""""""""""""
+"""""" Switching Windows
+"""""""""""""""""""""""""""
+^W K Move the current windows to the top and occup the full width
+^W H Move the current windows to the far left 
+^W J Move the current windows to the far bottom 
+^W L Move the current windows to the far right 
+
+"""""""""""""""""""""""""""
+"""""" Changing Windows Size
+"""""""""""""""""""""""""""
+^W + increase hight 
+^W - decrease hight 
+^W < increase width 
+^W > decrease width 
+
+"""""""""""""""""""""""""""
+"""""" Split Windows
+"""""""""""""""""""""""""""
+splitbelow split windows below
+leftabove  split windows left or above
+rigthblow  split windows write or below
+topleft    split windows at the top or left of VIM windows
+botright   split windows at the bottom or right of VIM windows
+^ws    Split windows
+^ww    switch windows
+^wq    quit a  windows
+^wv    split windows vertically
+
+browse split path_name
+browse edit
+
+"""""""""""""""""""""""""""
+"""""" Tab Windows
+"""""""""""""""""""""""""""
+vim -p file1 file2 file3
+:tabedit file_name
+:tabf file_name* --Searching file and open it in new tab
+:tabn file_name* --Searching file and open it in new tab
+:tabdo %s/foo/bar/gc -- runinig command through all tabs
+gt ;;switch tab    
+
+"""""""""""""""""""""""""""
+"""""" Buffer Windows
+"""""""""""""""""""""""""""
+:ls
+:buffer #number 
+:b5  -- Swith to buffer 5
+:sb5 -- Swith to buffer 5 with split
+:bnext, bprevious,bfirst,blast
+:bdelete #num
+
+"""""""""""""""""""""""""""
+"""""" Scrolling Windows
+"""""""""""""""""""""""""""
+    zh     scroll right
+    4zh    scroll four characters right
+    zH     scroll half a window width right
+    ze     scroll right to put the cursor at the end
+    zl     scroll left
+    4zl    scroll four characters left
+    zL     scroll half a window width left
+    zs     scroll left to put the cursor at the start
+    ^y     Move screen up
+    ^e     Move screen down
+    gu     change to Lowercase
+    gU     change to Uppercase
+    ~      switch case
+
+"""""""""""""""""""""""""""
+"""""" Scrolling Windows
+"""""""""""""""""""""""""""
+ <C-M>a (others => '0') 
+ <C-M>b '0'  
+ <C-M>c : std_logic                    ; --
+ <C-M>d : std_logic_vector(10 downto 0); -- 
+ <C-M>e : in  std_logic                    ; --
+ <C-M>f : out std_logic                    ; -- 
+ <C-M>g : in  std_logic_vector(10 downto 0); -- 
+ <C-M>h : out std_logic_vector(10 downto 0); -- 
+ <C-M>i : out std_logic_vector(10 downto 0); -- 
+ <C-M>j signal Xsingal_name            : std_logic_vector(17 downto 0) ; -- 
+ <C-M>k signal Xsingal_name            : std_logic                     ; -- 
+ <C-M>l  <= 
+ <C-M>m  <= (ohters => '0');
+ <C-M>n  <= '0'            ;
+
+set smartcase
+set ignorecase
+
+    :ls   List buffers
+    :bd   Close buffer
+    :bl - :bn Switch to buffer n
+    :sbn  Same as :b, but split
+    :map Normal, Visual and Operator-pending
+    :vmap Visual
+    :nmap Normal
+    :omap Operator-pending
+    :map! Insert and Command-line
+    :imap Insert
+    :cmap Command-line
+
+vertical diffsplit file_name
+diffoff
+
+<C-b> <Left>
+<C-f> <Right>
+<C-a> <Home>
+<C-e> <End>
+
+<C-M>aa (others => '0')
+<C-M>ab '0'            
+<C-M>ac (others => '1')
+<C-M>ad '1'            
+<C-M>ae  <= (others => '0');
+<C-M>af  <= '0'            ;
+<C-M>ag  <=  
+<C-M>ba : std_logic                    ; --
+<C-M>bb : std_logic_vector(10 downto 0); -- 
+<C-M>bc : in  std_logic                    ; --
+<C-M>bd : out std_logic                    ; -- 
+<C-M>be : in  std_logic_vector(10 downto 0); -- 
+<C-M>bf : out std_logic_vector(10 downto 0); -- 
+<C-M>bg : out std_logic_vector(10 downto 0); -- 
+<C-M>ca signal Xsingal_name            : std_logic_vector(17 downto 0) ; -- 
+<C-M>cb signal Xsingal_name            : std_logic                     ; -- 
+<C-E>e <Esc>bdwientity <Esc>pa is<CR>end entity ;<Esc>POport (<CR>);<Esc>O
+<C-E>a <Esc>b"zdwiarchitecture <Esc>pa of <Esc>mz?entity<CR>wyw`zpa is<CR>begin<CR>end architecture ;<Esc>"zPO
+<C-E>p <Esc>bywA : process ()<CR>begin<CR>end process ;<Esc>PO<+process body+><Esc>?)<CR>i
+<C-E>g <Esc>bdwipackage <Esc>pa is<CR><BS>end package ;<Esc>PO    
+<C-E>c case  is<CR>when <+state1+> =><CR><+action1+><CR>when <+state2+> =><CR><+action2+><CR>when others => null;<CR>end case;<Esc>6k$2hi
+<C-E>i if  then<CR><+do_something+>;<CR>elsif <+condition2+> then<CR><+do_something_else+>;<CR>else<CR><+do_something_else+>;<CR>end if;<Esc>6k$4hi
+	" shortcuts
+,, <= 
+.. => 
+"""For VHDL Commmenting
+,s : s/^/ / <CR>
+,c : s/^/-- / <CR>
+,d : s/-- /  / <CR> 
+,o : s/$/  --[OUT]/ <CR>
+,i : s/$/  --[IN]/ <CR>
+
+<C-s>i <Esc>:VHDLinst 
+<C-s>c <Esc>:VHDLcomp
+
+<M-i> <Esc>owhen 
+" abbreviations
+dt downto
+sig signal
+gen generate
+ot others
+sl std_logic
+slv std_logic_vector
+uns unsigned
+toi to_integer
+tos to_unsigned
+tou to_unsigned
+I: I : in 
+O: O : out 
+
+When searching:
+
+., *, \, [, ], ^, and $ are metacharacters.
++, ?, |, {, }, (, and ) must be escaped to use their special function.
+\/ is / (use backslash + forward slash to search for forward slash)
+\t is tab, \s is whitespace
+\n is newline, \r is CR (carriage return = Ctrl-M = ^M)
+\{#\} is used for repetition. /foo.\{2\} will match foo and the two following characters. The \ is not required on the closing } so /foo.\{2} will do the same thing.
+\(foo\) makes a backreference to foo. Parenthesis without escapes are literally matched. Here the \ is required for the closing \).
+When replacing:
+
+\r is newline, \n is a null byte (0x00).
+\& is ampersand (& is the text that matches the search pattern).
+\1 inserts the text of the first backreference. \2 inserts the second backreference, and so on.
+You can use other delimiters with substitute:
+
+:s#http://www.example.com/index.html#http://example.com/#
+Save typing by using \zs and \ze to set the start and end of a pattern. For example, instead of:
+
+:s/Copyright 2007 All Rights Reserved/Copyright 2008 All Rights Reserved/
+Use:
+
+:s/Copyright \zs2007\ze All Rights Reserved/2008/
+Using the current word or registersEdit
+
+:%s//bar/g
+Replace each match of the last search pattern with 'bar'.
+For example, you might first place the cursor on the word foo then press * to search for that word.
+The above substitute would then change all words exactly matching 'foo' to 'bar'.
+:%s/foo/<c-r><c-w>/g
+Replace each occurrence of 'foo' with the word under the cursor.
+<c-r><c-w> means that you press Ctrl-R then Ctrl-W.
+The word under the cursor will be inserted as though you typed it.
+:%s/foo/<c-r><c-a>/g
+Replace each occurrence of 'foo' with the WORD under the cursor (delimited by whitespace).
+<c-r><c-a> means that you press Ctrl-R then Ctrl-A.
+The WORD under the cursor will be inserted as though you typed it.
